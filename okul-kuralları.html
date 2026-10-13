@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Okul Kurallarımız</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="renkler.css">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .kutu {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: var(--box-bg);
+            padding: 20px;
+            border-radius: 30px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        h1, h2, h3, h5 {
+            color: var(--heading-color);
+            -webkit-text-fill-color: var(--heading-color);
+        }
+
+        h4 {
+            font-size: 25px;
+            color: var(--heading-color);
+            -webkit-text-fill-color: var(--heading-color);
+        }
+
+        h5 {
+            font-size: 25px;
+        }
+
+        .kutu a {
+            color: var(--link-color);
+            -webkit-text-fill-color: var(--link-color);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .imza {
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;          
+            margin-top: 30px;    
+            font-style: italic;   
+        }
+
+        .AtaturkResmi {
+            width: 150px !important;    
+            max-width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            margin: 15px auto !important; 
+            border-radius: 20px;
+        }
+
+        #darkModeToggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background-color: var(--box-bg);
+            color: var(--heading-color);
+            -webkit-text-fill-color: var(--heading-color);
+            border: 2px solid var(--heading-color);
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 9999;
+        }
+
+        .nav-bar {
+            width: 100%;
+            background-color: #b20000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .nav-link, .drop-btn {
+            color: white !important;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            background: none;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .ayrac {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 4px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #800000;
+            min-width: 170px;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .dropdown-menu a {
+            color: white !important;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #a00000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-bar .ayrac {
+                display: none !important;
+            }
+
+            .nav-bar {
+                flex-direction: column !important;
+                padding: 10px !important;
+            } 
+
+            .menu-toggle {
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+                background: transparent !important;
+                border: none !important;
+                color: white !important;
+                font-size: 20px !important;
+                font-weight: bold !important;
+                cursor: pointer !important;
+                padding: 8px 0 !important;
+            }
+
+            .nav-bar .dropdown, 
+            .nav-bar a.nav-link:not(.menu-toggle) {
+                display: none !important;
+                width: 100% !important;
+                text-align: center !important;
+                margin: 5px 0 !important;
+            }
+
+            .nav-bar.aktif .dropdown, 
+            .nav-bar.aktif a.nav-link {
+                display: block !important;
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                width: 100% !important;
+                box-shadow: none !important;
+                background-color: rgba(0,0,0,0.3) !important;
+            }
+        }
+
+        @media screen and (min-width: 769px) {
+            .menu-toggle {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar" id="mainNav">
+        <button class="menu-toggle" onclick="mobilMenuAcKapat()">☰ Menü</button>
+
+        <div class="dropdown">
+            <button class="drop-btn">Okulumuz ▾</button>
+            <div class="dropdown-menu">
+                <a href="mudur.html">Müdür</a>
+                <a href="kadromuz.html">Kadromuz</a>
+                <a href="tarihce.html">Tarihçe</a>
+                <a href="okulumuz-hakkinda.html">Okulumuz Hakkında</a>
+            </div>
+        </div>
+        <span class="ayrac">|</span>
+
+        <div class="dropdown">
+            <button class="drop-btn">Alanlar ▾</button>
+            <div class="dropdown-menu">
+                <a href="elektrik.html">Elektrik</a>
+                <a href="Bilisim.html">Bilişim</a>
+                <a href="cocuk-gelisim.html">Çocuk Gelişim</a>
+            </div>
+        </div>
+        <span class="ayrac">|</span>
+
+        <a href="okul-aile-birligi.html" class="nav-link">Okul Aile Birliği</a>
+        <span class="ayrac">|</span>
+
+        <a href="uygulama-anaokulu.html" class="nav-link">Uygulama Anaokulu</a>
+        <span class="ayrac">|</span>
+
+        <a href="iletisim.html" class="nav-link ikon">📞 İletişim</a>
+    </div>
+
+    <button id="darkModeToggle" onclick="geceModunuAcKapat()">🌙 Mod</button>
+
+    <p class="imza">Made by Süleyman</p>
+    <img src="ataturk.png" alt="atatürk" class="AtaturkResmi">
+    
+    <div class="kutu">
+        <h1>Okul Kurallarımız</h1>
+        <hr>
+        <hr>
+        <h2>Tüm veli ve öğrencilerimizin dikkatine !</h2>
+        <hr>
+        <h3>Okula formasız öğrenci alınmayacaktır.</h3>
+        <hr>
+        <h3>Randevusu olmayan veliler okula kabul edilmeyecektir.</h3>
+        <hr>
+        <h3>Okul güvenliği için aramalar sıklaştırılacak, suç teşkil eden unsurları taşıyan öğrenciler gerekli disiplin cezası ile tecziye</h3>
+        <h4>edilecektir.</h4>
+        <hr>
+        <h5>Telefonunu teslim etmeyen öğrencilerin telefonları sene sonuna kadar verilmeyecektir.</h5>
+        <hr>
+        <h1>Anlayısınız ve isbirliğiniz icin tesekkür ederiz.</h1>
+        <hr>
+        <a href="index.html">ANA SAYFAYA DÖNMEK İÇİN TIKLA</a>
+    </div>
+
+    <script>
+        function mobilMenuAcKapat() {
+            var nav = document.getElementById("mainNav");
+            nav.classList.toggle("aktif");
+        }
+
+        function geceModunuAcKapat() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('darkModeToggle');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                btn.innerHTML = "☀️ Mod";
+                localStorage.setItem('theme', 'dark');
+            } else {
+                btn.innerHTML = "🌙 Mod";
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.onload = function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                const btn = document.getElementById('darkModeToggle');
+                if (btn) btn.innerHTML = "☀️ Mod";
+            }
+        }
+    </script>
+</body>
+</html>

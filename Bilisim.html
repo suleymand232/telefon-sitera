@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alanlar - Bilişim</title>
+    <style>
+        :root {
+            --bg-color: #dedede;
+                 --box-bg: dimgray;
+             --text-color: #3f3f3f;
+               --heading-color: #dedede;
+              --link-color: #dedede;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+                  --box-bg: #1e1e1e;
+             --text-color: #e0e0e0;
+               --heading-color: #dedede;  
+            --link-color: #dedede;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+               margin: 0;
+            padding: 0;
+                font-family: Arial, sans-serif;
+                 transition: background-color 0.3s ease, color 0.3s ease;
+             display: flex;
+                flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-bar {
+            width: 100%;
+               background-color: #b20000;
+                display: flex;
+             justify-content: center;
+             align-items: center;
+ padding: 10px 0;
+             box-sizing: border-box;
+              position: relative;
+             z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .nav-link, .drop-btn {
+            color: white !important;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            background: none;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .ayrac {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 4px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+             top: 100%;
+             left: 0;
+             background-color: #800000;
+            min-width: 170px;
+             border-radius: 0 0 8px 8px;
+             overflow: hidden;
+            z-index: 1001;
+        }
+
+        .dropdown-menu a {
+            color: white !important;
+              padding: 10px 15px;
+               text-decoration: none;
+              display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #a00000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        #darkModeToggle {
+            position: fixed;
+              top: 15px;
+              right: 15px;
+               background-color: var(--box-bg);
+            color: var(--heading-color);
+             border: 2px solid var(--heading-color);
+            padding: 8px 14px;
+                 border-radius: 20px;
+            cursor: pointer;
+               font-weight: bold;
+            
+       z-index: 9999;
+        }
+
+        .imza {
+            text-align: center;
+ font-size: 14px;
+               color: #ccc;          
+                margin-top: 15px;    
+            font-style: italic;   
+        }   
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .ataturk-logo {
+            width: 150px !important;    
+                height: auto !important;
+               display: block !important;
+                   margin: 15px auto !important; 
+            border-radius: 20px;
+        }
+
+        .kutu {
+            width: 90%;
+            max-width: 1000px;
+              min-height: 400px;
+              margin: 20px auto;
+            background-color: var(--box-bg);
+               padding: 25px;
+              border-radius: 30px;
+            box-sizing: border-box;
+             transition: background-color 0.3s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+              .nav-bar .ayrac {
+                display: none !important;
+            }
+
+            .nav-bar {
+                  flex-direction: column !important;
+                padding: 10px !important;
+            } 
+
+            .menu-toggle {
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+                background: transparent !important;
+                border: none !important;
+                color: white !important;
+                font-size: 20px !important;
+                font-weight: bold !important;
+                cursor: pointer !important;
+                padding: 8px 0 !important;
+            }
+
+            .nav-bar .dropdown, 
+            .nav-bar a.nav-link:not(.menu-toggle) {
+                display: none !important;
+                width: 100% !important;
+                text-align: center !important;
+                margin: 5px 0 !important;
+            }
+
+            .nav-bar.aktif .dropdown, 
+            .nav-bar.aktif a.nav-link {
+                display: block !important;
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                width: 100% !important;
+                box-shadow: none !important;
+                background-color: rgba(0,0,0,0.3) !important;
+            }
+
+            .kutu {
+                width: 95% !important;
+                padding: 15px !important;
+            }
+
+            .mypc, .bilişim {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                display: block !important;
+                margin-top: 10px !important;
+                margin-bottom: 10px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+            }
+        }
+
+        @media screen and (min-width: 769px) {
+            .menu-toggle {
+                display: none !important;
+            }
+        }
+        .mypc {
+            margin-left:130px;
+            border-radius:20px;
+        }
+        .bilişim {
+            border-radius:20px;
+            margin-left:30px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar" id="mainNav">
+        <button class="menu-toggle" onclick="mobilMenuAcKapat()">☰ Menü</button>
+
+        <div class="dropdown">
+            <button class="drop-btn">Okulumuz ▾</button>
+            <div class="dropdown-menu">
+                <a href="mudur.html">Müdür</a>
+                <a href="kadromuz.html">Kadromuz</a>
+                <a href="tarihce.html">Tarihçe</a>
+                <a href="okulumuz-hakkinda.html">Okulumuz Hakkında</a>
+            </div>
+        </div>
+        <span class="ayrac">|</span>
+
+        <div class="dropdown">
+            <button class="drop-btn">Alanlar ▾</button>
+            <div class="dropdown-menu">
+                <a href="elektrik.html">Elektrik</a>
+                <a href="bilisim.html">Bilişim</a>
+                <a href="cocuk-gelisim.html">Çocuk Gelişim</a>
+            </div>
+        </div>
+        <span class="ayrac">|</span>
+
+        <a href="okul-aile-birligi.html" class="nav-link">Okul Aile Birliği</a>
+        <span class="ayrac">|</span>
+
+        <a href="uygulama-anaokulu.html" class="nav-link">Uygulama Anaokulu</a>
+        <span class="ayrac">|</span>
+
+        <a href="iletisim.html" class="nav-link ikon">📞 İletişim</a>
+    </div>
+
+    <button id="darkModeToggle" onclick="geceModunuAcKapat()">🌙 Mod</button>
+
+    <p class="imza">Made by Süleyman</p>
+    <img src="ataturk.png" alt="AtaturkResmi" class="ataturk-logo">
+    
+    <div class="kutu">
+        <img src="k_27233101_IMG-20181127-WA0012.jpg" class="bilişim" alt="okul foto" width="430">
+        <img  src="MY-PC.jpeg" class="mypc" alt="my pov" width="280">
+        <hr>
+
+        <h1>BİLİŞİM TEKNOLOJİLERİ ALANI</h1>
+        <hr>
+        <h3>ALANIN AMACI:
+
+Öğrencileri gündelik hayat ve iş dünyasının vazgeçilmez bir parçası olan bilgisayar alanında, yazılım ve donanıma hâkim bireyler haline getirmek; onları geleceğe ve ülke ekonomisindeki yeni yerlerine hazırlamak, öğrencileri bilgisayar teknolojilerini kullanabilen, ülke kalkınması yolunda önemli adımlar atabilen, iyi kararlar verebilen ve bu kararlara katılabilmek için genel ve teknolojik anlamda usta birer okur-yazar olan bireyler haline getirmek ve onların Bilişim Teknolojileri alanında istihdam edilebilmelerini sağlamaktır.</h3>
+<hr>
+<h2>MESLEK ELEMANLARINDA ARANAN ÖZELLİKLER</h2>
+<h3>•Sistemli düşünme gücüne sahip</h3>
+<h3>•Araştırmacı, yabancı dil bilen,</h3>
+<h3>•Tasarım ve görsel yeterliliğe sahip</h3>
+<h3>•Matematikle ilgili konularda başarılı, </h3>
+<h3>•Mantığı güçlü, </h3>
+<h3>•Dikkatli, sabırlı,</h3>
+<h3>•Kendini yenileyebilen</h3>
+<h3>•Ekip içinde çalışabilen sabırlı ve dikkatli, bir konunun çözümlenmesi için yapılması gereken işlemleri bilgisayar diline aktarabilen kimseler olmaları gerekir.</h3>
+<hr>
+<h4>ÇALIŞMA ORTAMI VE KOŞULLARI 
+
+Ağ işletmenleri, endüstride ve işletmelerde bilgisayar kullanılacak iş ortamlarında çalışırlar. Ayrıca geniş ağ bağlantıları oluşturabilmek için dış ortamda, oluşturulan ağların yönetimi için sunucuların bulunduğu büro ortamlarında çalışırlar. Birinci derecede cihaz, alet ve yazılımlarla ilgilidirler. Ancak, zaman zaman meslektaşları ve müşterilerle iletişim kurmaları gerekir. Meslekteki hastalık riskleri, ağ işletmenleri el aletleri ile fazla çalıştıkları için çeşitli iş kazaları riski ile karşı karşıya kalırlar. Bilgisayarda çalışanların şikâyetlerini boyun, omuz, el, kol, ayak ve sırt bölgelerinde yorgunluğa bağlı rahatsızlıklar meydana getirir. Bu tür rahatsızlıklar eklem ve kas hastalıklarına sebep olur.
+
+Web programcısı, büro ortamında çalışır ve genellikle tasarım ve görsel unsurlarla uğraşır. Çalışırken diğer meslektaşlarıyla ve iş sahipleriyle etkileşim hâlindedir. İş oturarak yürütülür, ortam genellikle sessizdir. Meslekteki hastalık riskleri; bilgisayar çalışanlarının görmeye yönelik sorunlarının başında göz sulanması, gözlerde tahriş ve batma, göz yorgunluğu, mavi ve çift görme
+gelmektedir.
+Veri Tabanı programcısı, büro ortamında çalışır ve genellikle programlama ve görsel unsurlarla uğraşır. Çalışırken diğer meslektaşlarıyla ve iş sahipleriyle etkileşim hâlindedir. İş oturarak yürütülür, ortam genellikle sessizdir. Meslekteki hastalık riskleri; bilgisayar çalışanlarının görmeye yönelik sorunlarının başında göz sulanması, gözlerde tahriş ve batma, göz yorgunluğu, mavi ve çift görme gelmektedir. Bilgisayarda çalışanların başlıca şikâyetlerini boyun, omuz, el, kol, ayak ve sırt bölgelerinde yorgunluğa bağlı rahatsızlıklar meydana getirir. Bu tür rahatsızlıklar eklem ve kas hastalıkları oluşturur. Bilgisayar teknik servis elemanı, teknik servis (bilgisayar toplanan) ortamında, elektronik devre yapımını gerçekleştirebileceği atölye ortamında çalışır. El aletlerini çok kullanır. Çalışırken diğer meslektaşlarıyla ve iş sahipleriyle etkileşim hâlindedir. İş çoğunlukla ayakta yürütülür, ortam biraz da olsa hareketlidir. Meslekteki hastalık riskleri, bilgisayar teknik servis elemanları ayakta çok fazla vakit geçirirler. Bu nedenle vücut yorgunlukları fazla olur. Elektronik devreleri gerçekleştirirken baskı devre yapımında ortaya çıkan gaza karşı dikkatli olmak gerekir. Lehimleme yaparken yanma riskine karşı dikkatli olmaları gerekir.</h4>
+<hr>
+<h2>ÇALIŞMA ALANLARI VE  İŞ BULMA OLANAKLARI 
+
+Bilişim Teknolojileri Alanı´ndan mezun olan öğrenciler, seçtikleri dal/meslekte kazandıkları yeterlikler doğrultusunda; 
+Yazılım Geliştirme Dalı: Yazılım Geliştirme Bölümü mezunları hem kamu hem de özel sektörde geniş iş imkanlarına sahiptir. Mezunların çalışabileceği başlıca sektörler ve iş imkanları aşağıdaki gibi sıralanabilir:</h2>
+
+<h3>Bilgi Teknolojileri (IT) Şirketleri</h3>
+<h3>inans ve Bankacılık Sektörü</h3>
+<h3>Sağlık Sektörü</h3>
+<h3>Eğitim Kurumları</h3>
+<h3>Oyun ve Eğlence Sektörü</h3>
+<h3>Telekomünikasyon Şirketleri</h3>
+<h3>Danışmanlık Firmaları</h3>
+<h3>Kamu Kurumları</h3>
+<hr>
+ <h5>23.05.2013 - Güncelleme: 10.10.2024 13:40" - Görüntülenme: 3114</h5>
+
+    </div>
+
+    <script>
+        function mobilMenuAcKapat() {
+            var nav = document.getElementById("mainNav");
+            nav.classList.toggle("aktif");
+        }
+
+        function geceModunuAcKapat() {
+            document.body.classList.toggle("dark-mode");
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+        }
+
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+    </script>
+</body>
+</html>
